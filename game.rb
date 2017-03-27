@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'sinatra/reloader' if development?
 
 get('/') do
 
@@ -14,9 +13,13 @@ get('/') do
 	if cards.index(@computer) < cards.index(@player)
 		@say = "computer wins"
 		@cscore += 1
+		@win= false
 	else
 		@say = "you win"
 		@pscore += 1
+		@win= true
 	end
+
+	
 	erb :index
 end

@@ -1,5 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+  position: relative;
+}
+
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  opacity: 0.3;
+}
+</style>
+<title>Page Title</title>
+</head>
+<body>
+
+  <div class="container">
+  <img src="trolltunga.jpg" alt="Norway" width="1000" height="300">
+  <div class="topleft">Top Left</div>
+</div>
+
+<h1>Let's Play!</h1>
+<p>The rules of the game:
+1) The person with the higher card wins the game!
+</p>
+<% if @win%>
+
+<img src="jack.png" width="400" height="300">
+<%end%>
 youre score: <%= @pscore %> <br>
 computers score: <%= @cscore %> <br>
 youre card is <%= @player %> <br>
 computers card is <%= @computer %> <br>
 <%= @say %> <br>
+
+
+
+</body>
+</html>
