@@ -6,9 +6,10 @@ enable :sessions
 
 
 get('/') do
-	#@cscore = -1
-	#@pscore = -1
-	#@pot = 2
+puts "hello"
+	
+	session[:score] ||= 0
+	@score = session[:score]
 	
 	cards = ["K", "Q", "J"]
 	scards = cards.shuffle
@@ -25,22 +26,19 @@ post('/') do
 puts params[:strategy]
 cards = ["K", "Q", "J"]
 if params[:strategy] == "fold"
-	@cscore = 1
-	@pscore = -1
+@say = "you folded"
 else
 	if cards.index(session[:ccard]) < cards.index(session[:pcard])
-		@cscore = 2
-		@pscore = -2
 		@say = "computer wins"
+		session[:score] -= 1
 	else
-		@cscore = -2
-		@pscore = 2
 		@say = "you win"
+		session[:score] += 1
 	end
 end
+@score = session[:score]
 erb :result
 end
-
 
 
 
